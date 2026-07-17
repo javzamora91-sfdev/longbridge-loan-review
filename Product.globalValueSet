@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Fixed</fullName>
+        <default>false</default>
+        <label>Fixed</label>
+    </customValue>
+    <customValue>
+        <fullName>HELOC</fullName>
+        <default>false</default>
+        <label>HELOC</label>
+    </customValue>
+    <customValue>
+        <fullName>Reverse</fullName>
+        <default>false</default>
+        <label>Reverse</label>
+    </customValue>
+    <description>Products offered by the company</description>
+    <masterLabel>Product</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

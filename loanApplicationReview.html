@@ -1,0 +1,181 @@
+<template>
+    <lightning-card title="Loan Application Review" icon-name="custom:custom5">
+        <div class="slds-var-p-around_medium">
+
+            <!-- Filters, Summary Metrics, and Bulk Button -->
+            <div class="slds-grid slds-gutters slds-var-m-bottom_medium slds-grid_vertical-align-center">
+                <div class="slds-col slds-size_1-of-4">
+                    <lightning-combobox name="statusFilter" label="Filter by Status" value={statusFilter}
+                        options={statusOptions} onchange={handleStatusChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_3-of-4 slds-text-align_right">
+                    <!-- Only show bulk button if we have selected actionable records -->
+                    <template if:true={hasSelectedRecords}>
+                        <lightning-button variant="brand" label={bulkButtonLabel} onclick={openDecisionModal}
+                            class="slds-var-m-right_medium">
+                        </lightning-button>
+                    </template>
+
+                    <div class="slds-show_inline-block slds-text-heading_small">
+                        Records: <strong class="slds-var-m-right_medium">{totalCount}</strong>
+                        Total Value: <strong><lightning-formatted-number value={totalAmount}
+                                format-style="currency"></lightning-formatted-number></strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Spinner State -->
+            <template if:true={isLoading}>
+                <div class="slds-is-relative slds-var-p-around_large">
+                    <lightning-spinner alt-name="Loading applications..." size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Error State -->
+            <template if:true={error}>
+                <div class="slds-var-m-vertical_medium">
+                    <section role="alert" class="slds-toast slds-theme_error">
+                        <div class="slds-toast__content">
+                            <h2 class="slds-text-heading_small">{error}</h2>
+                        </div>
+                    </section>
+                </div>
+            </template>
+
+            <!-- Main Data Table -->
+            <template if:false={isLoading}>
+                <template if:true={hasRecords}>
+                    <div class="slds-table_header-fixed_container" style="height:400px;">
+                        <div class="slds-scrollable_y" style="height:100%;">
+                            <table
+                                class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <!-- Header Checkbox: Hidden if status is Approved or Rejected -->
+                                        <th scope="col" style="width:3.25rem;">
+                                            <template if:true={isActionableStatus}>
+                                                <div class="slds-align_absolute-center">
+                                                    <lightning-input type="checkbox" label="Select All"
+                                                        variant="label-hidden" onchange={handleSelectAll}
+                                                        checked={isAllSelected}>
+                                                    </lightning-input>
+                                                </div>
+                                            </template>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Application</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Account</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Primary Applicant</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Product</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Amount</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Status</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">Actions</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={applications} for:item="loan">
+                                        <tr key={loan.Id} class="slds-hint-parent">
+                                            <!-- Row Checkbox: Hidden if status is Approved or Rejected -->
+                                            <td>
+                                                <template if:true={isActionableStatus}>
+                                                    <div class="slds-align_absolute-center">
+                                                        <lightning-input type="checkbox" value={loan.Id}
+                                                            checked={loan.isSelected} variant="label-hidden"
+                                                            onchange={handleRowSelection}>
+                                                        </lightning-input>
+                                                    </div>
+                                                </template>
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">{loan.Name}</div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">{loan.accountName}</div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">{loan.primaryApplicantName}</div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">{loan.Product__c}</div>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-number value={loan.Loan_Amount__c}
+                                                    format-style="currency"></lightning-formatted-number>
+                                            </td>
+                                            <td>
+                                                <lightning-badge label={loan.Status__c}></lightning-badge>
+                                            </td>
+                                            <td>
+                                                <!-- Row Action Button: Hidden entirely for Approved/Rejected loans -->
+                                                <template if:true={isActionableStatus}>
+                                                    <lightning-button variant="neutral" label="Action" value={loan.Id}
+                                                        onclick={openSingleDecisionModal}>
+                                                    </lightning-button>
+                                                </template>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:false={hasRecords}>
+                    <div
+                        class="slds-align_absolute-center slds-var-p-around_large slds-text-heading_small slds-text-color_weak">
+                        No applications found waiting for review in this status.
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+
+    <!-- Modal for Actioning Decision -->
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-modal__title slds-hyphenate">
+                        {modalTitle}
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-var-p-around_medium">
+                    <!-- Filtered options dropdown based on current status view -->
+                    <lightning-combobox name="decisionStatus" label="Next Status State" placeholder="Select Next State"
+                        options={dynamicDecisionOptions} value={decisionStatus} onchange={handleDecisionStatusChange}
+                        required class="validatable-field">
+                    </lightning-combobox>
+
+                    <!-- Render and require reason text box only for final decisions -->
+                    <template if:true={isReasonRequired}>
+                        <lightning-textarea label="Decision Reason" value={decisionReason} onchange={handleReasonChange}
+                            required class="slds-var-m-top_small validatable-field">
+                        </lightning-textarea>
+                    </template>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={closeDecisionModal}
+                        class="slds-var-m-right_x-small"></lightning-button>
+                    <lightning-button label="Submit Decision" variant="brand"
+                        onclick={handleSubmitDecision}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

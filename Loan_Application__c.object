@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Individual loan application records submitted by accounts.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Applicant_Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>The customer or household responsible for the application.</description>
+        <inlineHelpText>The customer or household responsible for the application.</inlineHelpText>
+        <label>Applicant Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Loan Applications</relationshipLabel>
+        <relationshipName>Loan_Applications</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Decision_Date__c</fullName>
+        <description>When the final decision was recorded.</description>
+        <inlineHelpText>When the final decision was recorded.</inlineHelpText>
+        <label>Decision Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Decision_Reason__c</fullName>
+        <description>Why the application was approved or rejected.</description>
+        <inlineHelpText>Why the application was approved or rejected.</inlineHelpText>
+        <label>Decision Reason</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Loan_Amount__c</fullName>
+        <description>The requested amount; must be greater than zero</description>
+        <inlineHelpText>The requested amount; must be greater than zero</inlineHelpText>
+        <label>Loan Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Applicant__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The individual being served, when applicable.</description>
+        <inlineHelpText>The individual being served, when applicable.</inlineHelpText>
+        <label>Primary Applicant</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Loan Applications</relationshipLabel>
+        <relationshipName>Loan_Applications</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <description>Products offered</description>
+        <inlineHelpText>Products offered</inlineHelpText>
+        <label>Product</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Product</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>The application&apos;s current status.</description>
+        <inlineHelpText>The application&apos;s current status.</inlineHelpText>
+        <label>Status</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Loan_Application_Status</valueSetName>
+        </valueSet>
+    </fields>
+    <label>Loan Application</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>LoA-{000000}</displayFormat>
+        <label>Loan Application Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Loan Applications</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Approved_Decision_Date_isBlocked</fullName>
+        <active>true</active>
+        <description>the first Decision Date on an approved loan should be protected from any update</description>
+        <errorConditionFormula>AND(
+ ISPICKVAL(PRIORVALUE(Status__c), &apos;Approved&apos;),
+ ISCHANGED(Decision_Date__c)
+    )</errorConditionFormula>
+        <errorMessage>You can not change the Decision Date of an Approved Loan</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Closed_Loans_Need_A_Reason</fullName>
+        <active>true</active>
+        <description>Loans need a reason on why they were approver or rejected.</description>
+        <errorConditionFormula>AND(
+ OR(
+ ISCHANGED( Status__c ),
+ ISNEW() 
+ ),
+ OR(
+  ISPICKVAL(Status__c, &apos;Approved&apos;), 
+  ISPICKVAL(Status__c, &apos;Rejected&apos;)
+ ),
+ OR(
+  ISBLANK(Decision_Reason__c), 
+  ISNULL(Decision_Reason__c)
+ ) 
+)</errorConditionFormula>
+        <errorDisplayField>Decision_Reason__c</errorDisplayField>
+        <errorMessage>You can not approve or reject a Loan Application without a reason.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Closed_Loans_Status_Can_Not_Be_Updated</fullName>
+        <active>true</active>
+        <description>A Loan Application can&apos;t be updated if it&apos;s either Approved or Rejected.</description>
+        <errorConditionFormula>AND(
+ NOT(ISNEW()),
+ ISCHANGED( Status__c ),
+ OR(
+  ISPICKVAL(PRIORVALUE(Status__c), &apos;Approved&apos;), 
+  ISPICKVAL(PRIORVALUE(Status__c), &apos;Rejected&apos;)
+ ),
+ $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+ $Profile.Name &lt;&gt; &apos;Integration User&apos;
+)</errorConditionFormula>
+        <errorDisplayField>Status__c</errorDisplayField>
+        <errorMessage>You cannot make any change to a closed application.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Loan_Application_Can_Not_Be_For_0</fullName>
+        <active>true</active>
+        <errorConditionFormula>Loan_Amount__c &lt;= 0</errorConditionFormula>
+        <errorMessage>You can not create a Loan Application with 0 as amount</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>
