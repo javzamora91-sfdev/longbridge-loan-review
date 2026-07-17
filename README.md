@@ -41,7 +41,7 @@ Fields:
 
 3. Component Architecture & Placement:
 Lightning Web Component: loanApplicationReview
-Placement: Positioned prominently on a custom Home Page to allow immediate global access to waiting queues as soon as a loan officer authenticates.
+Placement: Positioned prominently on a custom Home Page to allow immediate global access to waiting queues as soon as a loan officer authenticates, also placed on an app page to allow access and not loosing the reporting metrics readiness the home page serves.
 Loading Strategy: Implemented a 100-record threshold Limit query with server-side pagination capability. This prevents browser memory leaks when scaling to hundreds of records while maintaining instant UI rendering performance.
 UI-State Checklist:
 	[x]Loading State: Implemented utilizing lightning-spinner to provide smooth, accessible feedback.
