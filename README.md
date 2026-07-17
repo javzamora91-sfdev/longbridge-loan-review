@@ -5,9 +5,6 @@
 **Version:** V1.0
 
 A high-performance, secure, and bulk-safe slice of a loan origination subsystem allowing Loan Officers to review, filter, and action their pending applications directly from a single screen.
-
-
-
 ---------------------------------------------
 
 1. Setup & Deployment Steps
@@ -22,11 +19,12 @@ sf project deploy start -o LongbridgeScratch
 sf org assign permset -n Loan_Operations_User -o LongbridgeScratch
 sf data import tree import -f data/Account-Loan_Application__c.json -o LongbridgeScratch
 
+ ```
 
 
 ---------------------------------------------
 
-2.Data Model & Field Choices
+2. Data Model & Field Choices
 Custom Object: Loan_Application__c
 Sharing Model: set to private to protect financial data and allowing to grant access using hierarchies on the org, meaning that only the owners and their manager's can view/edit a loan.
 Fields:
@@ -88,9 +86,11 @@ Total Behavioral Coverage Verified: 100% with complex mock assertions across syn
 ---------------------------------------------
 
 7.Stretch Goal (Implemented)
-Durable Error Logging & Resilient Integration Retry Strategy
+Durable Error Logging & Resilient Integration Retry Strategy.
 To elevate this solution to a production-grade enterprise standard, we implemented an advanced error capture topology within the asynchronous engine:
 
 	[x]Durable Exception Capture: The `UnderwritingQueueable` execution layer uses an aggressive try-catch wrapper that prevents network dropped connections or severe `400/500` HTTP failures from crashing the thread context.
 	[x]Decoupled Failure Interface: Caught errors are safely intercepted and handed off to the `logFailure` interface block instead of throwing unhandled runtime exceptions.
 	[x]Production Replay Architecture (Design Pattern): While inside the strict timebox, the `logFailure` framework is architected to cleanly write directly to a custom transactional error log object (`Integration_Error_Log__c`). In a production landscape, this log would trigger an automated retry architecture—either via a scheduled nightly batch sweep or an event-driven replay mechanism using Platform Events—ensuring data delivery guarantees for the underwriting service without requiring manual human intervention.
+
+
