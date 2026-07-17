@@ -11,7 +11,7 @@ A high-performance, secure, and bulk-safe slice of a loan origination subsystem 
 
 Clone the Repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/javzamora91-sfdev/longbridge-loan-review.git
    cd longbridge-loan-review
 sf org login web -d -a DevHub
 sf org create scratch -f config/project-scratch-def.json -a LongbridgeScratch -d 30
