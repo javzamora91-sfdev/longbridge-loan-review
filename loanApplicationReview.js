@@ -86,7 +86,7 @@ export default class LoanApplicationReview extends LightningElement {
     }
 
     get isActionableStatus() {
-        return this.statusFilter === 'New' || this.statusFilter === 'Under Review' || this.statusFilter === 'Rejected';
+        return this.statusFilter === 'New' || this.statusFilter === 'Under Review';
     }
 
     get isReasonRequired() {
